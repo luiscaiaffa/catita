@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<title>Catita</title>
+	<link href="/img/favicon.144x144.png" rel="apple-touch-icon" type="image/png" sizes="144x144">
+	<link href="/img/favicon.114x114.png" rel="apple-touch-icon" type="image/png" sizes="114x114">
+	<link href="/img/favicon.72x72.png" rel="apple-touch-icon" type="image/png" sizes="72x72">
+	<link href="/img/favicon.57x57.png" rel="apple-touch-icon" type="image/png">
+	<link href="/img/favicon.png" rel="icon" type="image/png">
+	<link href="/img/favicon.ico" rel="shortcut icon">
+
+	<link rel="stylesheet" href="/build/css/lib/font-awesome/font-awesome.min.css">
+	<link rel="stylesheet" href="/build/css/lib/bootstrap/bootstrap.min.css">
+	<link rel="stylesheet" href="/build/css/separate/pages/activity.min.css">
+	<link rel="stylesheet" href="/build/css/main.css">
+</head>
+<body class="without-side-menu">
+
+	<% include ../partials/nav.ejs %>
+	
+	<div class="page-content">
+		<div class="container-fluid" id="commit">
+			
+			<% if (dados.length > 0) { %>
+				<% for (var i=0; i<dados.length; i++) { %>
+					<section class="activity-line">
+						<article class="activity-line-item box-typical">
+							<div class="activity-line-date">
+								Tuesday<br>
+								sep 9
+							</div>
+							<header class="activity-line-item-header">
+								<div class="activity-line-item-user">
+									<div class="activity-line-item-user-photo">
+										<a href="#">
+											<img src="img/photo-64-2.jpg" alt="">
+										</a>
+									</div>
+									<div class="activity-line-item-user-name"><%=dados[i].href%></div>
+									<div class="activity-line-item-user-status">Developer, Palo Alto</div>
+								</div>
+							</header>
+						</article>
+					</section>
+				<% } %>
+			<% } %>
+		</div>
+	</div>
+
+	<script src="/build/js/lib/jquery/jquery.min.js"></script>
+	<script src="/build/js/lib/tether/tether.min.js"></script>
+	<script src="/build/js/lib/bootstrap/bootstrap.min.js"></script>
+	<script src="/build/js/plugins.js"></script>
+	<script src="/build/js/app.js"></script>
+
+	<script src="/socket.io/socket.io.js"></script>
+	<script type="text/javascript">
+	var socket = io("http://localhost:5000")
+	socket.on('msgParaCliente', function(data){
+		console.log(data)
+	});
+	</script>
+
+</body>
+</html>
